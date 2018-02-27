@@ -1,5 +1,5 @@
 // const index = require('./index.html')
-const Koa = require('koa')
+const Koa = import('koa')
 const app = new Koa()
 
 app.use(require('koa-static')('/home/thomas/tunes/build'));
