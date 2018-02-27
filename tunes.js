@@ -1,4 +1,4 @@
-const index = require('./index.html')
+const index = require('./build/index.html')
 const Koa = require('koa')
 const app = new Koa()
 
