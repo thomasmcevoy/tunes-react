@@ -3,8 +3,5 @@
 const Koa = require('koa')
 const app = new Koa()
 
-app.use(async ctx => {
-  ctx.body = 'Hello World'
-})
-
+app.use(require('koa-static')('./build'))
 app.listen(3001)
