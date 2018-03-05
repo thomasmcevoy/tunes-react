@@ -25,9 +25,8 @@ echo "Deploying app with the following commit message:"
 echo "'${MESSAGE}'"
 echo "--------------------------------------------------------------------------------"
 
-npm run build
-cd /Users/thomas/Projects/thomasmcevoy.github.io
+yarn build
 git add .
 git commit -m "${MESSAGE}"
 git push
-ssh thomas@104.236.66.208 "cd thomasmcevoy.github.io; git pull; exit"
+ssh thomas@104.236.66.208 "cd tunes; git pull; exit"
