@@ -1,9 +1,9 @@
 'use strict'
 
+const serve = require('koa-static')
 const Koa = require('koa')
 const app = new Koa()
-const port = 3001
 
-app.use(Server(__dirname + '/build'))
+app.use(serve(__dirname + '/build'))
 
-app.listen(port)
+app.listen(3001)
