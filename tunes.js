@@ -8,7 +8,7 @@ const app = new Koa()
 // })
 
 // This doesn't work
-app.use(serve(__dirname + '/build'))
+app.use(serve(__dirname + 'build'))
 
 app.listen(3001)
 
