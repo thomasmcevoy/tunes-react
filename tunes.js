@@ -2,11 +2,13 @@ const serve = require('koa-static')
 const Koa = require('koa')
 const app = new Koa()
 
-// app.use(serve(__dirname + '/build'))
+// This works
+// app.use(ctx => {
+//   ctx.body = 'Hello Koa'
+// })
 
-app.use(ctx => {
-  ctx.body = 'Hello Koa'
-})
+// This doesn't work
+app.use(serve(__dirname + '/build'))
 
 app.listen(3001)
 
