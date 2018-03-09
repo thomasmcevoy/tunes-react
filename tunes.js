@@ -5,9 +5,9 @@ const app = new Koa()
 // app.use(serve(__dirname + '/build'))
 
 app.use(async ctx => {
-  ctx
-  ctx.request
-  ctx.response
+  console.log(ctx)
+  console.log(ctx.request)
+  console.log(ctx.response)
 })
 
 app.listen(3001)
