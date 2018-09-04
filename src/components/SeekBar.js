@@ -5,20 +5,13 @@ class SeekBar extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      visible: false,
+      lastScrolledTo: null,
       height: window.innerHeight - 48,
-      isActive: false,
-      lastScrolledTo: null
     }
   }
 
-  componentDidMount() {
-    this.setHeight()
-    window.addEventListener('resize', this.setHeight)
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.setHeight)
-  }
+  setHeight = () => this.setState({ height: this.getHeight() })
 
   getHeight = () => {
     const { innerHeight } = window
@@ -26,24 +19,14 @@ class SeekBar extends React.Component {
     return innerHeight - offsetHeight
   }
 
-  setHeight = () => this.setState({ height: this.getHeight() })
-
-  onTouchStart = e => {
-    this.setState({ isActive: true })
-    this.onTouchMove(e)
-  }
-
-  onTouchMove = e => {
-    e.preventDefault()
-
+  scrollToMarker = (e) => {
     const { lastScrolledTo } = this.state
     const { clientX, clientY } = e.nativeEvent.touches[0]
     const marker = document.elementFromPoint(clientX, clientY)
     const id = marker ? marker.innerText : undefined
     const target = document.getElementById(id)
 
-    if (id && lastScrolledTo !== id && target && marker && 
-        marker.classList.contains('Seekbar-marker')) {
+    if (id && lastScrolledTo !== id && target && marker && marker.classList.contains('Seekbar-marker')) {
       const headerHeight = document.querySelector('.App-header').clientHeight
       window.scrollTo(0, target.offsetTop - headerHeight)
       this.setState({ lastScrolledTo: id })
@@ -51,9 +34,25 @@ class SeekBar extends React.Component {
     }
   }
 
-  onTouchEnd = e => {
-    this.setState({ isActive: false })
+  onTouchStart = (e) => {
     e.preventDefault()
+    this.scrollToMarker(e)
+    this.setState({ visible: true })
+  }
+
+  onTouchMove = (e) => {
+    e.preventDefault()
+    this.scrollToMarker(e)
+  }
+
+  onTouchEnd = (e) => {
+    e.preventDefault()
+    this.setState({ visible: false })
+  }
+
+  componentDidMount() {
+    this.setHeight()
+    window.addEventListener('resize', this.setHeight)
   }
 
   render() {
@@ -68,7 +67,7 @@ class SeekBar extends React.Component {
       >
         <div className={classNames({
           "Seekbar": true,
-          "visible": this.state.isActive
+          "visible": this.state.visible
         })}>
           {markers.map(marker => 
             <div key={marker} className={classNames({
@@ -81,6 +80,10 @@ class SeekBar extends React.Component {
         </div>
       </div>
     )
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.setHeight)
   }
 }
 

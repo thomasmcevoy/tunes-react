@@ -139,7 +139,6 @@ class App extends React.Component {
             setAppState={this.setAppState}
           />
           <MenuDrawer
-            menuIsOpen={this.state.menuIsOpen}
             sortBy={this.state.sortBy}
             filter={this.state.filter}
             setAppState={this.setAppState}

@@ -1,6 +1,7 @@
 {
   "name": "tunes",
   "version": "0.1.0",
+  "homepage": "https://thomas-mcevoy.com/tunes/",
   "private": true,
   "dependencies": {
     "classnames": "^2.2.5",

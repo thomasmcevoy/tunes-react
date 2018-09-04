@@ -278,7 +278,7 @@ body {
   height: 100%;
   transition: .2s;
 }
-.Seekbar.visible { 
+.Seekbar.visible  { 
   right: 0;
 }
 .Seekbar-marker {
