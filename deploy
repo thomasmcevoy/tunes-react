@@ -21,12 +21,15 @@ set -- "${POSITIONAL[@]}" # restore positional parameters
 
 echo ""
 echo "--------------------------------------------------------------------------------"
-echo "Deploying app with the following commit message:"
-echo "'${MESSAGE}'"
+date
+echo "Deploying app:  ${MESSAGE}"
 echo "--------------------------------------------------------------------------------"
-
+echo ""
 yarn build
+cd /Users/thomas/Projects/thomasmcevoy.github.io
+pwd
+cp -rf ../tunes/build/ ./dist/tunes/
 git add .
 git commit -m "${MESSAGE}"
 git push
-ssh thomas@104.236.66.208 "cd tunes && git pull && pm2 restart tunes && exit"
+ssh thomas@104.236.66.208 "cd thomasmcevoy.github.io && git pull && exit"

@@ -3,6 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import { TunesScreen, SetlistScreen, RandomScreen } from './containers'
 import { Header, MenuDrawer } from './components'
 import { debounce } from 'lodash'
+import classnames from 'classnames'
 import Tunes from './tunes'
 import './App.css'
 
@@ -14,6 +15,7 @@ class App extends React.Component {
       setlist: [],
       randomTune: {},
       menuIsOpen: false,
+      seekbarIsVisible: false,
       activeRoute: '/tunes',
       filter: 'all',
       sortBy: 'title',
@@ -54,15 +56,14 @@ class App extends React.Component {
 
   componentDidMount() {
     // Get tunes from API
-    // Uncomment in production
     // ----------------------------------------------------
     // fetch('https://thomas-mcevoy.com/api/tunes/')
     //   .then(response => JSON.parse(response))
     //   .then(responseJson => this.setState({ tunes: responseJson }))
     //   .catch(error => console.log(error))
 
-    this.setState({ randomTune: this.getNewRandomTune() })
-
+    this.setState({ randomTune: this.getNewRandomTune() })  // prevent rerender
+    
     window.addEventListener('scroll', debounce(e => {
       if (window.location.pathname === '/tunes')
         this.setState({ tunesScrollPosition: window.scrollY })
@@ -74,18 +75,19 @@ class App extends React.Component {
   setAppState = nextState => this.setState(nextState)
 
   getNewRandomTune = () => {
-    const filteredTunes = this.filterTunes(this.state.tunes)
+    const filtered = this.filterTunes(this.state.tunes)
     let index
     
-    do { index = Math.floor(Math.random() * filteredTunes.length)}
-    while (this.state.setlist.includes(filteredTunes[index]))
+    do { index = Math.floor(Math.random() * filtered.length)}
+    while (this.state.setlist.includes(filtered[index]))
     
-    return filteredTunes[index]
+    return filtered[index]
   }
 
   sortTunes = tunes => [...tunes].sort((a, b) => {
     const { sortBy } = this.state
-    if (sortBy === 'year') return a.year - b.year
+    if (sortBy === 'year') 
+      return a.year - b.year
     else {
       if (a[sortBy] < b[sortBy]) return -1
       if (a[sortBy] > b[sortBy]) return 1
@@ -116,11 +118,11 @@ class App extends React.Component {
   })
 
   toggleSelected = tune => this.setState((prevState, _) => {
-    let nextTunes = [...prevState.tunes]
-    let nextTune = nextTunes[nextTunes.indexOf(tune)]
+    const nextTunes = [...prevState.tunes]
+    const nextTune = nextTunes[nextTunes.indexOf(tune)]
     nextTune.selected = 'selected' in nextTune ? !nextTune.selected : true
     
-    let nextSetlist = [...prevState.setlist]
+    const nextSetlist = [...prevState.setlist]
     const index = nextSetlist.indexOf(tune)
     index === -1 ? nextSetlist.push(tune) : nextSetlist.splice(index, 1)  
     
@@ -133,7 +135,10 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <div className="App">
+        <div className={classnames({
+          "App": true,
+          "scroll-lock": this.state.seekbarIsVisible,
+        })}>
           <Header
             menuIsOpen={this.state.menuIsOpen}
             setAppState={this.setAppState}
@@ -149,6 +154,7 @@ class App extends React.Component {
                 tunes={this.sortTunes(this.filterTunes(this.state.tunes))}
                 sortBy={this.state.sortBy}
                 scrollPosition={this.state.tunesScrollPosition}
+                seekbarIsVisible={this.state.seekbarIsVisible}
                 toggleSelected={this.toggleSelected}
                 setAppState={this.setAppState}
               />

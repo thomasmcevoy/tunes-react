@@ -26,7 +26,11 @@ class SeekBar extends React.Component {
     const id = marker ? marker.innerText : undefined
     const target = document.getElementById(id)
 
-    if (id && lastScrolledTo !== id && target && marker && marker.classList.contains('Seekbar-marker')) {
+    if (id 
+     && lastScrolledTo !== id 
+     && target 
+     && marker 
+     && marker.classList.contains('Seekbar-marker')) {
       const headerHeight = document.querySelector('.App-header').clientHeight
       window.scrollTo(0, target.offsetTop - headerHeight)
       this.setState({ lastScrolledTo: id })
@@ -35,19 +39,16 @@ class SeekBar extends React.Component {
   }
 
   onTouchStart = (e) => {
-    e.preventDefault()
+    this.props.setAppState({ seekbarIsVisible: true })
     this.scrollToMarker(e)
-    this.setState({ visible: true })
   }
 
   onTouchMove = (e) => {
-    e.preventDefault()
     this.scrollToMarker(e)
   }
 
   onTouchEnd = (e) => {
-    e.preventDefault()
-    this.setState({ visible: false })
+    this.props.setAppState({ seekbarIsVisible: false })
   }
 
   componentDidMount() {
@@ -56,7 +57,7 @@ class SeekBar extends React.Component {
   }
 
   render() {
-    const { markers, sortBy } = this.props
+    const { markers, seekbarIsVisible, sortBy } = this.props
 
     return (
       <div className="Seekbar-container"
@@ -67,7 +68,7 @@ class SeekBar extends React.Component {
       >
         <div className={classNames({
           "Seekbar": true,
-          "visible": this.state.visible
+          "visible": seekbarIsVisible,
         })}>
           {markers.map(marker => 
             <div key={marker} className={classNames({

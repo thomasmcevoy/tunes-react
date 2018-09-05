@@ -17,6 +17,10 @@
   box-sizing: border-box;
 }
 
+.scroll-lock {
+  overflow: hidden;
+}
+
 body {
   background-color: #eee;
 }

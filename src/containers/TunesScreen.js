@@ -1,4 +1,5 @@
 import React from 'react'
+import classnames from 'classnames'
 import { SeekBar, Tune } from '../components'
 
 class TunesScreen extends React.Component {
@@ -9,26 +10,16 @@ class TunesScreen extends React.Component {
     }
   }
 
-  componentDidMount() {
-    window.scrollTo(0, this.props.scrollPosition)  
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps !== this.props.sortBy) {
-      this.setState({ markers: this.getMarkers() })
-    }
-  }
-
   getYearMarker = tune => tune.year < 1900 ? '<' : tune.year.toString().slice(2)
   
-  getCharMarker = tune => {
+  getCharMarker = (tune) => {
     const marker = tune[this.props.sortBy].charAt(0)
     return !isNaN(parseInt(marker, 10)) ? '#' : marker
   }
   
-  getNextMarker = tune => this.props.sortBy === 'year'
-    ? this.getYearMarker(tune)
-    : this.getCharMarker(tune)
+  getNextMarker = tune => this.props.sortBy === 'year' ? 
+    this.getYearMarker(tune) : 
+    this.getCharMarker(tune)
 
   getMarkers = () => {
     let markers = Array.from(new Set(this.props.tunes.map(tune => 
@@ -57,20 +48,34 @@ class TunesScreen extends React.Component {
       />
     }
 
-    return tunes.map(tune => nextId === this.getNextMarker(tune)
-      ? generateTune(tune, nextId) 
-      : generateTune(tune))
+    return tunes.map(tune => nextId === this.getNextMarker(tune) ? 
+      generateTune(tune, nextId) : 
+      generateTune(tune, null))
+  }
+
+  componentDidMount() {
+    window.scrollTo(0, this.props.scrollPosition)  
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps !== this.props.sortBy) {
+      this.setState({ markers: this.getMarkers() })
+    }
   }
 
   render() {
-    const { sortBy, setAppState } = this.props
+    const { sortBy, seekbarIsVisible, setAppState } = this.props
 
     return (
-      <div className="Tunes-screen">
+      <div className={classnames({
+        "Tunes-screen": true,
+        "scroll-lock": seekbarIsVisible
+      })}>
         <SeekBar 
-          markers={this.state.markers} 
-          sortBy={sortBy} 
+          markers={this.state.markers}
+          seekbarIsVisible={seekbarIsVisible} 
           setAppState={setAppState}
+          sortBy={sortBy}
         />
         <ul className="Tunes-list">
           { this.getTunelist() }
