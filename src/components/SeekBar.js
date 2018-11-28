@@ -38,7 +38,18 @@ class SeekBar extends React.Component {
     }
   }
 
+  disableScrolling = () => {
+    document.body.style.overflow = 'hidden'
+    document.body.style.height = '100%'
+  }
+
+  enableScrolling = () => {
+    document.body.style.overflow = 'auto'
+    document.body.style.height = 'auto'
+  }
+
   onTouchStart = (e) => {
+    this.disableScrolling()
     this.props.setAppState({ seekbarIsVisible: true })
     this.scrollToMarker(e)
   }
@@ -48,6 +59,7 @@ class SeekBar extends React.Component {
   }
 
   onTouchEnd = (e) => {
+    this.enableScrolling()
     this.props.setAppState({ seekbarIsVisible: false })
   }
 

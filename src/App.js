@@ -3,7 +3,6 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import { TunesScreen, SetlistScreen, RandomScreen } from './containers'
 import { Header, MenuDrawer } from './components'
 import { debounce } from 'lodash'
-import classnames from 'classnames'
 import Tunes from './tunes'
 import './App.css'
 
@@ -40,7 +39,7 @@ class App extends React.Component {
       'Duke Ellington', 'Billy Strayhorn', 'Tadd Dameron', 'Billie Holiday', 
       'Benny Goodman', 'Count Basie', 'Neal Hefti', 'Thelonious Monk', 
       'Kenny Clarke', 'Charlie Parker', 'Dizzy Gillespie', 'Mary Lou Williams', 
-      'John Louis',  'J. J. Johnson', 'Bud Powell', 'Oscar Pettiford',
+      'John Louis', 'J. J. Johnson', 'Bud Powell', 'Oscar Pettiford',
       'Denzil Best', 'George Shearing', 'Gigi Gryce', 'Duke Jordan',
       'Miles Davis', 'Sonny Rollins', 'Milt Jackson', 'Horace Silver',
       'Dave Brubeck', 'Jackie McLean', 'Bill Evans', 'Benny Golson',
@@ -86,6 +85,7 @@ class App extends React.Component {
 
   sortTunes = tunes => [...tunes].sort((a, b) => {
     const { sortBy } = this.state
+    
     if (sortBy === 'year') 
       return a.year - b.year
     else {
@@ -135,10 +135,7 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <div className={classnames({
-          "App": true,
-          "scroll-lock": this.state.seekbarIsVisible,
-        })}>
+        <div className="App">
           <Header
             menuIsOpen={this.state.menuIsOpen}
             setAppState={this.setAppState}

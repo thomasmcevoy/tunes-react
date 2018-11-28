@@ -1,35 +1,14 @@
 #!/bin/bash
 
-POSITIONAL=()
-while [[ $# -gt 0 ]]
-do
-key="$1"
-
-case $key in
-    -m|--message)
-    MESSAGE="$2"
-    shift # past argument
-    shift # past value
-    ;;
-    *)    # unknown option
-    POSITIONAL+=("$1") # save it in an array for later
-    shift # past argument
-    ;;
-esac
-done
-set -- "${POSITIONAL[@]}" # restore positional parameters
-
 echo ""
 echo "--------------------------------------------------------------------------------"
 date
-echo "Deploying app:  ${MESSAGE}"
+echo "Deploying app:  $1"
 echo "--------------------------------------------------------------------------------"
-echo ""
+
 yarn build
-cd /Users/thomas/Projects/thomasmcevoy.github.io
-pwd
-cp -rf ../tunes/build/ ./dist/tunes/
+cp -rf /build/ ../thomas-mcevoy.com/dist/tunes/
+cd ../thomas-mcevoy.com
 git add .
-git commit -m "${MESSAGE}"
+git commit -m "$1"
 git push
-ssh thomas@104.236.66.208 "cd thomasmcevoy.github.io && git pull && exit"

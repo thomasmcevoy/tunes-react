@@ -59,7 +59,9 @@ class TunesScreen extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps !== this.props.sortBy) {
-      this.setState({ markers: this.getMarkers() })
+      this.setState({ 
+        markers: this.getMarkers() 
+      })
     }
   }
 

@@ -922,6 +922,11 @@ export default [
     "latin": true
   },
   {
+    "title": "Change Partners",
+    "composer": "Irving Berlin",
+    "year": 1938
+  },
+  {
     "title": "Charlie's Wig",
     "composer": "Charlie Parker",
     "year": 1947
