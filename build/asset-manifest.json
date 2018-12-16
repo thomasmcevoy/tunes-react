@@ -1,8 +1,14 @@
 {
-  "main.css": "static/css/main.2163b9a5.css",
-  "main.css.map": "static/css/main.2163b9a5.css.map",
-  "main.js": "static/js/main.059b9874.js",
-  "main.js.map": "static/js/main.059b9874.js.map",
-  "static/media/Berthold Akzidenz Grotesk BE Medium.ttf": "static/media/Berthold Akzidenz Grotesk BE Medium.e338d68a.ttf",
-  "static/media/Berthold Akzidenz Grotesk BE Regular.ttf": "static/media/Berthold Akzidenz Grotesk BE Regular.30546242.ttf"
+  "main.css": "/tunes/static/css/main.d2b4564b.chunk.css",
+  "main.js": "/tunes/static/js/main.08eaa972.chunk.js",
+  "main.js.map": "/tunes/static/js/main.08eaa972.chunk.js.map",
+  "static/js/1.34b1181d.chunk.js": "/tunes/static/js/1.34b1181d.chunk.js",
+  "static/js/1.34b1181d.chunk.js.map": "/tunes/static/js/1.34b1181d.chunk.js.map",
+  "runtime~main.js": "/tunes/static/js/runtime~main.465c3b7d.js",
+  "runtime~main.js.map": "/tunes/static/js/runtime~main.465c3b7d.js.map",
+  "static/media/App.css": "/tunes/static/media/Berthold Akzidenz Grotesk BE Regular.30546242.ttf",
+  "static/css/main.d2b4564b.chunk.css.map": "/tunes/static/css/main.d2b4564b.chunk.css.map",
+  "index.html": "/tunes/index.html",
+  "precache-manifest.0922c848e779591d4118fa26fe62a838.js": "/tunes/precache-manifest.0922c848e779591d4118fa26fe62a838.js",
+  "service-worker.js": "/tunes/service-worker.js"
 }

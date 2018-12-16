@@ -2,13 +2,10 @@
 
 echo ""
 echo "--------------------------------------------------------------------------------"
-date
-echo "Deploying app:  $1"
+echo "Deploying app with the following commit message:"
+echo "'$1'"
 echo "--------------------------------------------------------------------------------"
 
-yarn build
-cp -rf /build/ ../thomas-mcevoy.com/dist/tunes/
-cd ../thomas-mcevoy.com
 git add .
 git commit -m "$1"
 git push
