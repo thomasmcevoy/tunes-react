@@ -1,7 +1,7 @@
 {
   "name": "tunes",
   "version": "0.1.0",
-  "homepage": "https://thomasmcevoy.github.io/tunes",
+  "homepage": "https://thomasmcevoy.github.io/tunes-react",
   "private": true,
   "dependencies": {
     "classnames": "*",
