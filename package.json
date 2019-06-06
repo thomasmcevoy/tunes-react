@@ -7,12 +7,12 @@
     "classnames": "*",
     "gh-pages": "*",
     "hammerjs": "*",
-    "koa": "*",
+    "koa": "^2.7.0",
     "koa-static": "^5.0.0",
-    "react": "*",
-    "react-dom": "*",
-    "react-router-dom": "*",
-    "react-scripts": "^2.1.1"
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "^2.1.8"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,14 +1,14 @@
 {
-  "main.css": "/tunes/static/css/main.d2b4564b.chunk.css",
-  "main.js": "/tunes/static/js/main.82d75563.chunk.js",
-  "main.js.map": "/tunes/static/js/main.82d75563.chunk.js.map",
-  "static/js/1.34b1181d.chunk.js": "/tunes/static/js/1.34b1181d.chunk.js",
-  "static/js/1.34b1181d.chunk.js.map": "/tunes/static/js/1.34b1181d.chunk.js.map",
-  "runtime~main.js": "/tunes/static/js/runtime~main.465c3b7d.js",
-  "runtime~main.js.map": "/tunes/static/js/runtime~main.465c3b7d.js.map",
-  "static/media/App.css": "/tunes/static/media/Berthold Akzidenz Grotesk BE Medium.e338d68a.ttf",
-  "static/css/main.d2b4564b.chunk.css.map": "/tunes/static/css/main.d2b4564b.chunk.css.map",
-  "index.html": "/tunes/index.html",
-  "precache-manifest.cd297640aaaa25a01f933645202247e6.js": "/tunes/precache-manifest.cd297640aaaa25a01f933645202247e6.js",
-  "service-worker.js": "/tunes/service-worker.js"
+  "main.css": "/tunes-react/static/css/main.3bc94b57.chunk.css",
+  "main.js": "/tunes-react/static/js/main.aa28402e.chunk.js",
+  "main.js.map": "/tunes-react/static/js/main.aa28402e.chunk.js.map",
+  "static/js/1.34b1181d.chunk.js": "/tunes-react/static/js/1.34b1181d.chunk.js",
+  "static/js/1.34b1181d.chunk.js.map": "/tunes-react/static/js/1.34b1181d.chunk.js.map",
+  "runtime~main.js": "/tunes-react/static/js/runtime~main.d4dd50c4.js",
+  "runtime~main.js.map": "/tunes-react/static/js/runtime~main.d4dd50c4.js.map",
+  "static/media/App.css": "/tunes-react/static/media/Berthold Akzidenz Grotesk BE Regular.30546242.ttf",
+  "static/css/main.3bc94b57.chunk.css.map": "/tunes-react/static/css/main.3bc94b57.chunk.css.map",
+  "index.html": "/tunes-react/index.html",
+  "precache-manifest.ce6b86b34674e753e54d01846d9ee08b.js": "/tunes-react/precache-manifest.ce6b86b34674e753e54d01846d9ee08b.js",
+  "service-worker.js": "/tunes-react/service-worker.js"
 }
